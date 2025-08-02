@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sentiment Result</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-..." crossorigin="anonymous">
+  <style>
+    .emoji {
+      font-size: 5rem;
+      line-height: 1;
+    }
+    .score-badge {
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body class="bg-light">
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start">
+              <h2 class="card-title mb-3">Analysis Result</h2>
+              <a href="/" class="btn btn-outline-secondary btn-sm">New</a>
+            </div>
+
+            {% if error %}
+              <div class="alert alert-danger" role="alert">
+                {{ error }}
+              </div>
+            {% else %}
+              <div class="text-center mb-3">
+                <div class="emoji">{{ emoji }}</div>
+                <h4 class="mt-2">{{ label }}</h4>
+                <span class="badge bg-info score-badge">Confidence: {{ score }}</span>
+              </div>
+              <div class="mb-3">
+                <h6>Input Text:</h6>
+                <p class="border rounded p-3 bg-white">{{ text }}</p>
+              </div>
+            {% endif %}
+
+            <div class="text-center">
+              <a href="/" class="btn btn-primary">Analyze Another</a>
+            </div>
+            <div class="text-center mt-2">
+              <small class="text-muted">Model: distilbert-base-uncased-finetuned-sst-2-english</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-..." crossorigin="anonymous"></script>
+</body>
+</html>
